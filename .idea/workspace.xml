@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="37f67982-e0bd-47de-828f-a7701e144dcb" name="Default Changelist" comment="" />
+    <list default="true" id="37f67982-e0bd-47de-828f-a7701e144dcb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -52,8 +54,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/testobject.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="56" column="55" lean-forward="true" selection-start-line="56" selection-start-column="55" selection-end-line="56" selection-end-column="55" />
+            <state relative-caret-position="550">
+              <caret line="79" column="79" lean-forward="true" selection-start-line="79" selection-start-column="79" selection-end-line="79" selection-end-column="79" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -105,6 +107,9 @@
       <find>map</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -126,6 +131,7 @@
     <option name="width" value="1680" />
     <option name="height" value="996" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -189,12 +195,12 @@
       <workItem from="1541210649586" duration="1147000" />
       <workItem from="1541493326810" duration="616000" />
       <workItem from="1545272799780" duration="109000" />
-      <workItem from="1545273000892" duration="595000" />
+      <workItem from="1545273000892" duration="829000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43607000" />
+    <option name="totallyTimeSpent" value="43841000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="996" extended-state="0" />
@@ -211,7 +217,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.17588496" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -235,8 +241,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/testobject.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="56" column="55" lean-forward="true" selection-start-line="56" selection-start-column="55" selection-end-line="56" selection-end-column="55" />
+        <state relative-caret-position="550">
+          <caret line="79" column="79" lean-forward="true" selection-start-line="79" selection-start-column="79" selection-end-line="79" selection-end-column="79" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
