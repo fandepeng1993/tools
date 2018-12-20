@@ -80,6 +80,7 @@
     var img2s =new Image();
     var imge3s =new Image();
     fetchSelData = () => {
+      // 读取文件！！
       fetch('./dog.jpg')
         .then((res) => { console.log(res);return res.blob(); })
         .then((data) => {
@@ -95,6 +96,10 @@
           imgs.src = url;
           document.body.appendChild(imgs)
           //console.log(imgs);
+          readers.onload=function(){
+            //正在加载数据。。。
+            console.log(123123)
+          }
           readers.onloadend = function () {
             imge3s.src =  readers.result;
             document.body.appendChild(imge3s)
