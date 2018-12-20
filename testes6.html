@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="fdp">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+</div>
+<script>
+/*
+
+    (()=>{
+
+        var dom = document
+
+        var listmap=document.getElementsByClassName('fdp')
+
+        console.log('NodeList', listmap)
+        console.log('HTMLCollection', listmap[0].querySelectorAll('text'))
+
+    })()*/
+
+
+/* let a = 1, b = 2, c = 3;
+ let {e}={e:4,f:5,g:6}
+ console.log(a,b,c,e)*/
+
+/*let [, [[], c]] = [1, [[2], 3]]*/
+/*
+let [a, b, c] = new Set(['1', '2', '3'])
+
+console.log(a,b,c)*/
+
+  //默认值解构
+
+/*let [foo=true]=[];
+console.log(foo)*/
+  //严格等于undefined null!==undefined
+/*let [x, y = 'b'] = ['a',undefined];
+console.log(x, y)*/
+
+/*function f() {
+  console.log('aaa')
+    //返回值是undefined
+    return 3
+}
+
+let [x=f()]=[undefined]
+
+console.log(x)*/
+
+ //默认值解构其他变量
+/*let [x=1,y=x]=[2,3]
+console.log(x,y)*/
+//对象的解构
+/*let {bar,foo,baz='xxx'}={foo:'aaaa',bar:'bbbb',baz:'cccc'}
+console.log(foo,bar,baz)*/
+ //变量名与属性名不一致
+/* let {foo:baz}={foo:'aaa',bar:'bbb'}
+ console.log(baz)*/
+/*let obj={first:'hello',last:'world'};
+let {first:f,last=1} =obj
+console.log(f,last)*/
+//解构嵌套
+/*let obj ={
+    p:[
+        'hello',
+        {
+            y:'World'
+        }
+    ]
+}
+
+let {p:[x, {y:xx}]}=obj
+console.log(x,xx)*/
+
+/*const node={
+    loc:{
+        start:{
+            line:1,
+            column:5
+        }
+    }
+};
+let {loc:loc,loc:{start},loc:{start:{line}}}  =node
+ //第一个loc是loc:loc,第二个loc是模式
+ console.log(loc,start,line)*/
+/*let obj={};
+let arr=[];
+({foo:obj.prop,bar:arr[0]}={foo:123,bar:true})
+
+console.log(obj,arr)*/
+//对象解构的指定默认值
+
+/*let{x=3}={x:undefined}*/
+/*let {x,y=5}={x:1}
+console.log(x,y)*/
+
+/*let {x:y=3} ={}
+console.log(y)*/
+
+/*let {message:msg='Something went wrong'}={}
+console.log(msg)*/
+
+//默认值生效的条件是，对象的属性值严格等于 undefined null不严格等于undefined
+ /*let {x=3}={x:undefined}||{}
+ let {y=4}={y:null}||{}
+ console.log(x,y)*/
+
+/* let{baz:bar}={baz:'baz'} ;
+ console.log(bar)*/
+/*let x;
+({x=3}={x:1})  ;
+console.log(x)//1*/
+//array 是特殊对象
+/*let arr=[1,2,3];
+let {0:first,[arr.length-1]:last} =arr;
+console.log(first,last)*/
+
+//字符串解构赋值
+/*const [a,b,c,d,e,]=`hello`;
+let {length:len}=`hello`
+console.log(a,b,c,d,e,len)*/
+//数值和布尔值的解构赋值
+/* let{toString:s}=123
+ let a=true;
+ console.log(a.toString())*/
+
+/*function add([x,y]) {
+   return x+y
+}
+console.log(add([1,2]))*/
+ //console.log([[1,2],[3,4]].map(([a,b])=>{return a + b}))
+
+/*function move({x=0,y=0}={x:undefined,y:undefined}) {
+   return [x,y]
+}
+console.log(move({x:3,y:8}));
+console.log(move({x:3,y:undefined}));
+console.log(move({x:3,y:undefined}));*/
+
+/*function move({x,y=3}={x:0,y:0}) {
+  return[x,y]
+}
+ console.log(move()) //0,0
+ console.log(move({})) //[undefined,3]*/
+//undefined就会触发函数参数的默认值
+/*
+console.log(
+    [1,undefined,3,null,{x:undefined}].map((x='yes')=>{
+        return x
+    })
+)
+*/
+//可以使用圆括号的情况只有一种：赋值语句的非模式部分，可以使用圆括号
+/*[(b)] = [3];
+({p: (d)}= {});
+[(parseInt.prop)] = [3];
+console.log(b, d)*/
+//用途
+//（1）交换变量的值
+    /*let x=1;
+    let y=2;
+    [x,y]=[y,x]
+    console.log(x,y)*/
+//（2）从函数返回多个值
+/*    function example() {
+        return [1,2,3]
+    }
+    let [a,b,c]=example()
+
+   function examples() {
+      return {foo:1,bar:2}
+   }
+    let {foo,bar}=  examples()*/
+//（3）函数参数的定义
+    /*function f([x,y,z]) {
+        let obj=[x=x,y=y,z=z]
+        /!*console.log(x,y,z,obj)*!/
+        obj.map((item)=>{
+          return item + 5
+        })
+        return obj
+    }
+    console.log(f([1,2,3]))*/
+//(4）提取 JSON 数据
+  /*let jsonData ={
+      id:42,
+      status:'Ok',
+      data:[867,5309]
+  };
+  let {id, status,data:number}=jsonData
+  console.log(id,status,number)*/
+//快速提取 JSON 数据的值
+
+ //（5）函数参数的默认值
+  /*let  jQuery={}
+  jQuery.ajax=function (url, {
+      async=true,
+      beforeSend=function () {},
+      cache=true,
+      complete=function () {} ,
+      crossDomain=false,
+      global=true
+  }={}) {
+    //默认参数
+      console.log(async)
+  }
+  jQuery.ajax('url',{async:false})*/
+  //（6）遍历 Map 结构
+/*    const map=new Map();
+    map.set('first','hellod');
+    map.set('second','world');
+    for(let [key,value] of map){
+        console.log(key+' is '+value)
+    }*/
+
+console.log('\u0061','\uD842\uDFB7','\u20BB7')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: olive;
+        }
+      .container{
+          width:100vw;
+          height:100vh;
+          background: orange;
+          display: flex;
+          flex-direction: column;
+      }
+    .header{
+        height: 60px;
+        background: red;
+
+    }
+    .content{
+        flex: 1;
+        background: aqua;
+        display: flex;
+    }
+    .left{
+         background-color: darkmagenta;
+    }
+    .right{
+        background-color: darkorange;
+        flex: 1;
+    }
+    .footer{
+        height: 60px;
+        background: blue;
+    }
+    .wraper{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color: darkorange;
+
+    }
+        .inner{
+            width: 50%;
+            height: calc(30vh - 18px);
+            background-color: aqua;
+        }
+        .small{
+            width: 100%;
+            height: 100%;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+<!--<div class="container">
+    <div class="header">header</div>
+    <div class="content">
+        <div class="left">left</div>
+        <div class="right">right</div>
+    </div>
+    <div class="footer">footer</div>
+</div>-->
+
+<div class="wraper">
+    <div class="inner">
+        <div class="small"></div>
+    </div>
+</div>
+</body>
+</html>
