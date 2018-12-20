@@ -69,10 +69,55 @@
     <div class="footer">footer</div>
 </div>-->
 
-<div class="wraper">
+<!--<div class="wraper">
     <div class="inner">
         <div class="small"></div>
     </div>
-</div>
+</div>-->
+<script>
+  window.onload=function () {
+    var imgs = new Image();
+    var img2s =new Image();
+    var imge3s =new Image();
+    fetchSelData = () => {
+      fetch('./dog.jpg')
+        .then((res) => { console.log(res);return res.blob(); })
+        .then((data) => {
+          // data blob  创建一个url对象指向该blob
+          var url = URL.createObjectURL(data);
+          var reader = new FileReader();
+          //ArrayBuffer
+          reader.readAsArrayBuffer(data);
+          //base64
+          var readers = new FileReader();
+          readers.readAsDataURL(data)
+          //var pimg= document.createElement('img');
+          imgs.src = url;
+          document.body.appendChild(imgs)
+          //console.log(imgs);
+          readers.onloadend = function () {
+            imge3s.src =  readers.result;
+            document.body.appendChild(imge3s)
+            //console.log(readers.result);
+          };
+          reader.onloadend=function(){
+            // var urls = URL.createObjectURL(reader.result);
+            var urls = new Blob([reader.result]);
+            var durls = URL.createObjectURL(urls);
+            img2s.src=durls;
+            //console.log(urls, durls);
+            document.body.appendChild(img2s);
+            URL.revokeObjectURL(urls);
+          };
+          URL.revokeObjectURL(data);
+          //console.log(data,url, reader);
+          //a.href = url;
+        })
+        .catch((e) => {console.log(e.message); });
+    } ;
+
+    fetchSelData();
+  }
+</script>
 </body>
 </html>

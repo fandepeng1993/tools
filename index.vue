@@ -54,6 +54,7 @@ export default {
     },
   },
   mounted() {
+
     /** @type {{video: HTMLVideoElement}} */
     const { video } = this.$refs;
 
