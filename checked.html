@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    ul{
+        list-style: none;
+    }
+    .header{
+       width: 100%;
+        background: aqua;
+    }
+    .header ul{
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+    }
+    .header ul li{
+        cursor: pointer;
+    }
+    .header ul li:hover{
+        color: red;
+    }
+    .header ul li span{
+        display: none;
+    }
+    .header ul li.active{
+        color: red;
+    }
+
+
+
+    .content{
+        width: 100%;
+        height:300px;
+        background: lightcoral;
+
+    }
+    .wrapper{
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    .wrapper>li{
+      position: absolute;
+        display: none;
+    }
+    .wrapper>li.active  {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .wrapper-children {
+        padding: 20px;
+    }
+    .wrapper-children li{
+        text-align: center;
+        margin: 10px 0px;
+        cursor: pointer;
+        color: blue;
+    }
+    .wrapper-children li:hover{
+        color: pink;
+    }
+</style>
+<body>
+<div class="header">
+    <ul>
+        <li class="active"><span>*</span>品名1</li>
+        <li><span>*</span>品名2</li>
+        <li><span>*</span>品名3</li>
+        <li><span>*</span>品名4</li>
+        <li><span>*</span>品名5</li>
+    </ul>
+</div>
+<div class="content">
+    <ul class="wrapper">
+        <li class="active">
+            <ul class="wrapper-children">
+                <li>
+                    <i>active</i>
+                    <span>内容1</span>
+                </li>
+                <li>
+                    <i>active</i>
+                    <span>内容1</span>
+                </li>
+                <li>
+                    <i>active</i>
+                    <span>内容1</span>
+                </li>
+                <li>
+                    <i>active</i>
+                    <span>内容1</span>
+                </li>
+                <li>
+                    <i>active</i>
+                    <span>内容1</span>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <ul class="wrapper-children">
+                <li>
+                    <i>active</i>
+                    <span>内容2</span>
+                </li>
+                <li>
+                    <i>active</i>
+                    <span>内容2</span>
+                </li>
+                <li>
+                    <i>active</i>
+                    <span>内容2</span>
+                </li>
+                <li>
+                    <i>active</i>
+                    <span>内容2</span>
+                </li>
+                <li>
+                    <i>active</i>
+                    <span>内容2</span>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <ul class="wrapper-children">
+                <li>
+                    <i>active</i>
+                    <span>内容3</span>
+                </li>
+                <li>
+                    <i>active</i>
+                    <span>内容3</span>
+                </li>
+                <li>
+                    <i>active</i>
+                    <span>内容3</span>
+                </li>
+                <li>
+                    <i>active</i>
+                    <span>内容3</span>
+                </li>
+                <li>
+                    <i>active</i>
+                    <span>内容3</span>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <ul class="wrapper-children">
+                <li>
+                    <i>active</i>
+                    <span>内容4</span>
+                </li>
+                <li>
+                    <i>active</i>
+                    <span>内容4</span>
+                </li>
+                <li>
+                    <i>active</i>
+                    <span>内容4</span>
+                </li>
+                <li>
+                    <i>active</i>
+                    <span>内容4</span>
+                </li>
+                <li>
+                    <i>active</i>
+                    <span>内容4</span>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <ul class="wrapper-children">
+                <li>
+                    <i>active</i>
+                    <span>内容5</span>
+                </li>
+                <li>
+                    <i>active</i>
+                    <span>内容5</span>
+                </li>
+                <li>
+                    <i>active</i>
+                    <span>内容5</span>
+                </li>
+                <li>
+                    <i>active</i>
+                    <span>内容5</span>
+                </li>
+                <li>
+                    <i>active</i>
+                    <span>内容5</span>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<script src="./jq.js"></script>
+<script type="text/javascript">
+ class DOMOPTION {
+   constructor(dom, event, dom2, className){
+     this.dom = dom;
+     this.dom2 = dom2;
+     this.event = event;
+     this.className = className;
+   }
+   static get(){
+
+   }
+   static set(){
+
+   }
+   create(){
+     //console.log(this.event);
+     for(var i = 0; i < this.dom.length; i++){
+       this.bindEvnet(this.dom[i], i);
+     }
+   }
+   bindEvnet(dom, index){
+     var that = this;
+    dom.addEventListener(this.event,this.options(that,index))
+   }
+   options(that, index){
+     var dom2current = that.dom2[index];
+     return function () {
+       //点击事件
+       that.addClass(this);
+       that.addClass(dom2current);
+     }
+   }
+   addClass(dom){
+     var that = this;
+     $(dom).addClass(that.className).siblings().removeClass(that.className);
+   }
+ }
+
+ class OPTION extends DOMOPTION {
+   constructor(dom,event,dom2, className) {
+     // 调用此方法，可以调用父类方法
+     super(dom,event,dom2,className);
+     this.dom2 = dom2;
+     //可以修改传入父类的数据
+     // this.dom = dom || '123'
+   }
+   getDom(){
+     console.log(this.dom,OPTION.dom,this)
+   }
+   static getDoms (){
+     // console.log(OPTION.dom)
+   }
+ }
+
+ class COPTION extends DOMOPTION {
+   constructor(dom,event,dom2, className) {
+     // 调用此方法，可以调用父类方法
+     super(dom,event,dom2,className);
+     this.dom2 = dom2;
+     //可以修改传入父类的数据
+     // this.dom = dom || '123'
+   }
+ }
+
+  window.onload = function () {
+    var Headerdoms = document.querySelectorAll('.header>ul li');
+    var contentTab = document.querySelectorAll('.content>.wrapper>li');
+    var coptions = document.querySelectorAll()
+    var headerTab = new OPTION(Headerdoms,'click', contentTab, 'active');
+    headerTab.create();
+  }
+</script>
+</body>
+</html>
