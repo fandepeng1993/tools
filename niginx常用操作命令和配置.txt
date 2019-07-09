@@ -1,0 +1,40 @@
+Nginx 常用操作命令
+
+Mac 安装nginx路径
+/usr/local/etc/nginx
+
+服务端
+/etc/nginx
+
+nginx -s reload //重载
+nginx -s stop //停止
+nginx -s start //启动 
+
+// 查看目前执行的服务
+brew services list
+
+// 停止nginx服务
+brew services stop nginx
+
+// 查看nginx配置有木有生效
+nginx -t
+
+// 查看nginx所有的配置
+nginx -T 
+
+// 重启动nginx服务
+brew services restart nginx
+
+// 停止nginx服务
+brew services stop nginx
+
+// mongodb 启动
+brew services start mongodb
+brew services restart mongodb
+// 连接数据库
+mongod
+
+Linux centos:
+
+service mongod stop
+service mongod start

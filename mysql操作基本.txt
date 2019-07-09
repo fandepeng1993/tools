@@ -1,0 +1,128 @@
+mysql 操作命令
+root
+root
+
+authentication plugin 'caching_sha2_password'的解决办法:
+use mysql;
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+
+
+确保环境没有mysql 
+brew remove mysql 
+brew cleanup 
+
+登陆mysql：mysql -u root -p
+启动mysql：brew services start mysql
+停止mysql：brew services stop mysql
+重启mysql服务命令：mysql.server restart mysql.server start mysql.server start
+
+
+
+管理MySQL的命令
+1.USE 数据库名;选择要操作的Mysql数据库，使用该命令后所有Mysql命令都只针对该数据库。
+2.SHOW DATABASES; 列出 MySQL 数据库管理系统的数据库列表。
+3.SHOW TABLES;显示指定数据库的所有表，使用该命令前需要使用 use 命令来选择要操作的数据库。
+4.SHOW COLUMNS FROM 数据表;显示数据表的属性，属性类型，主键信息 ，是否为 NULL，默认值等其他信息。
+5.SHOW INDEX FROM 数据表;显示数据表的详细索引信息，包括PRIMARY KEY（主键）。
+6. SHOW TABLE STATUS LIKE [FROM db_name] [LIKE 'pattern'] \G;该命令将输出Mysql数据库管理系统的性能及统计信息。
+ex:SHOW TABLE STATUS from RUNOOB LIKE 'runoob%'\G;   
+# 加上 \G表名以runoob开头的表的信息，查询结果按列打印
+
+7.CREATE DATABASE 数据库名;  //创建数据库
+8.drop database 数据库名;  //drop 命令删除数据库
+
+创建数据表
+1.CREATE TABLE table_name (column_name column_type);
+ex:CREATE TABLE IF NOT EXISTS `runoob_tbl`(
+   `runoob_id` INT UNSIGNED AUTO_INCREMENT,
+   `runoob_title` VARCHAR(100) NOT NULL,
+   `runoob_author` VARCHAR(40) NOT NULL,
+   `submission_date` DATE,
+   PRIMARY KEY ( `runoob_id` )
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+2.DROP TABLE table_name;//删除MySQL数据表的通用语法
+3.INSERT INTO table_name ( field1, field2,...fieldN )
+                       VALUES
+                       ( value1, value2,...valueN ); //向数据表中插入数据
+
+
+4.SELECT column_name,column_name FROM table_name [WHERE Clause] [LIMIT N][ OFFSET M]
+//MySQL数据库中查询数据通用的 SELECT 语法
+Ps:
+  查询语句中你可以使用一个或者多个表，表之间使用逗号(,)分割，并使用WHERE语句来设定查询条件。
+  SELECT 命令可以读取一条或者多条记录。
+  你可以使用星号（*）来代替其他字段，SELECT语句会返回表的所有字段数据
+  你可以使用 WHERE 语句来包含任何条件。
+  你可以使用 LIMIT 属性来设定返回的记录数。
+  你可以通过OFFSET指定SELECT语句开始查询的数据偏移量。默认情况下偏移量为0。
+
+
+5.SQL SELECT 语句使用 WHERE 子句从数据表中读取数据
+SELECT field1, field2,...fieldN FROM table_name1, table_name2...
+[WHERE condition1 [AND [OR]] condition2.....
+	查询语句中你可以使用一个或者多个表，表之间使用逗号, 分割，并使用WHERE语句来设定查询条件。
+	你可以在 WHERE 子句中指定任何条件。
+	你可以使用 AND 或者 OR 指定一个或多个条件。
+	WHERE 子句也可以运用于 SQL 的 DELETE 或者 UPDATE 命令。
+	WHERE 子句类似于程序语言中的 if 条件，根据 MySQL 表中的字段值来读取指定的数据。
+Ex:select * from user,runoob_tbl WHERE BINARY id=1 AND runoob_id=1;
+
+6.UPDATE 命令修改 MySQL 数据表数据
+UPDATE table_name SET field1=new-value1, field2=new-value2
+[WHERE Clause]
+	你可以同时更新一个或多个字段。
+	你可以在 WHERE 子句中指定任何条件。
+	你可以在一个单独表中同时更新数据。
+Ex:  UPDATE user SET name='tianfeng' WHERE id=3;
+
+7.SQL DELETE 语句从 MySQL 数据表中删除数据
+   DELETE FROM table_name [WHERE Clause];
+	如果没有指定 WHERE 子句，MySQL 表中的所有记录将被删除。
+	你可以在 WHERE 子句中指定任何条件
+	您可以在单个表中一次性删除记录。
+8.SELECT field1, field2,...fieldN FROM table_name WHERE field1 LIKE condition1 [AND [OR]] filed2 = 'somevalue' //like语句
+有时候我们需要获取 runoob_author 字段含有 "COM" 字符的所有记录，这时我们就需要在 WHERE 子句中使用 SQL LIKE 子句。
+SQL LIKE 子句中使用百分号 %字符来表示任意字符。
+如果没有使用百分号 %, LIKE 子句与等号 = 的效果是一样的。
+
+9.UNION 操作符用于连接两个以上的 SELECT 语句的结果组合到一个结果集合中。多个 SELECT 语句会删除重复的数据。
+SELECT expression1, expression2, ... expression_n
+FROM tables
+[WHERE conditions]
+UNION [ALL | DISTINCT]
+SELECT expression1, expression2, ... expression_n
+FROM tables
+[WHERE conditions];
+expression1, expression2, ... expression_n: 要检索的列。
+tables: 要检索的数据表。
+WHERE conditions: 可选， 检索条件。
+DISTINCT: 可选，删除结果集中重复的数据。默认情况下 UNION 操作符已经删除了重复数据，所以 DISTINCT 修饰符对结果没啥影响。
+ALL: 可选，返回所有结果集，包含重复数据。
+
+10.mysql排序ORDER BY
+SELECT field1, field2,...fieldN table_name1, table_name2...
+ORDER BY field1 [ASC [DESC][默认 ASC]], [field2...] [ASC [DESC][默认 ASC]]
+
+11.分组 GROUP BY
+SELECT column_name, function(column_name)
+FROM table_name
+WHERE column_name operator value
+GROUP BY column_name;
+ex:select name,count(*) from employee_tbl where name like '%明' group by name;
+11.1 WITH ROLLUP. //WITH ROLLUP 可以实现在分组统计数据基础上再进行相同的统计（SUM,AVG,COUNT…）。
+ coalesce 来设置一个可以取代 NUll 的名称 // select coalesce(a,b,c);
+SELECT coalesce(name, '总数'), SUM(singin) as singin_count FROM  employee_tbl GROUP BY name WITH ROLLUP;
+
+12.mysql   INNER JOIN（内连接,或等值连接） 连接 LEFT JOIN（左连接）RIGHT JOIN（右连接）
+SELECT a.runoob_id, a.runoob_author, b.runoob_count FROM runoob_tbl a INNER JOIN tcount_tbl b ON a.runoob_author = b.runoob_author;
+
+13.NULL 值处理
+查找数据表中 runoob_test_tbl 列是否为 NULL，必须使用 IS NULL 和 IS NOT NULL
+select * , columnName1+ifnull(columnName2,0) from tableName;
+SELECT * FROM runoob_test_tbl WHERE runoob_count IS NULL;
+
+
+
+
+

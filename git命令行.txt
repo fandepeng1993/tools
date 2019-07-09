@@ -60,8 +60,8 @@ git branch
   git merge 分之名  合并某分支到当前分支
 
 git remote add origin SSH 关联一个远程库 
-
-
+vue install -g vue-cli
+vue init web pack proName!!
 
 驻场
 服务器代理 172.31.1.246 ：80

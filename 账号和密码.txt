@@ -1,0 +1,64 @@
+Mysql
+root
+root
+
+
+ÍøÒ×ÓÊÏä/ÆßÅ£ÔÆ
+sss_fan@126.com 
+fandepeng1993
+
+fandepeng1993@163.com
+fdp270178123
+
+¹È¸èÕËºÅ
+fandepeng1993@gmail.com
+fdp@1993
+
+SourceTreeÕËºÅ  
+sss_fan@126.com 
+fandepeng1993
+
+PostmanÕËºÅ
+sss_fan@126.com 
+fandepeng1993
+
+npmÕËºÅ
+webfandepeng 163ÓÊÏä fdp270178123
+fandepeng 126ÓÊÏä fandepeng1993
+
+ÅÉÀ­Èí¼ş 
+ÓÊÏä
+ÕËºÅ fandp@paraview.cn
+ÃÜÂë Fandepeng1993
+
+
+
+webÏîÄ¿
+sysadmin
+password@123456
+http://demo.paraview.cn
+ìøµÀ/OA
+fandp
+fandepeng1993
+
+wikiÊÖ²á
+admin Parav1ew
+					
+http://192.168.2.32:1122 server
+
+¸ü¸ÄÆÆ½âidea±à¼­Æ÷
+cd /etc/hosts
+0.0.0.0 account.jetbrains.com
+0.0.0.0 www.jetbrains.com
+
+
+
+
+
+
+
+
+
+
+
+

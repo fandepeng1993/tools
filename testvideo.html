@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    #video {
+        border: 1px solid #aaaaaa;
+        box-shadow: 1px 1px 1px 1px salmon;
+    }
+
+    #video video {
+        width: 600px;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>Blob/FileReader/XMLHttpRequest/FetchApi 获取本地视频</h2>
+<p>URL.createObjectURL/URL.createObjectURL</p>
+<div id="video"></div>
+</body>
+<script>
+    /*main入口*/
+    (() => {
+        window.onload = () => {
+            console.log('初始化完成');
+            /*****************************/
+            // filerReader + fetchApi 读取视频文件
+            // filereaderFetchApi();
+            /*****************************/
+
+            /*****************************/
+            // filerReader + XMLHttpRequest 读取视频文件
+            filereaderXmlHttpRequest()
+            /*****************************/
+
+
+        }
+    })();
+
+    // fetchAPi异步读取视频
+    async function fetchVideo(src) {
+        let resolve = null;
+        await fetch(src).then((readerResult) => {
+            console.log(readerResult)
+            // Response对象
+            return readerResult.blob()
+        }).then((data) => {
+            // blob对象
+            resolve = data;
+        });
+        return resolve;
+    }
+
+    // xhr异步读取视频
+    function xhrVideo(src) {
+        let promise = new Promise((resolve, reject) => {
+            xhrReadVideo('./video.mp4', resolve);
+        });
+        return promise
+    }
+
+    function xhrReadVideo(src, resolve) {
+        let xhr = new XMLHttpRequest();
+        let result = null;
+        xhr.open('GET', src);
+        xhr.responseType = "blob";
+        // xhr.responseType = "arraybuffer";
+
+        xhr.onloadstart = (e) => {
+            console.log('开始读取视频')
+        };
+
+        xhr.addEventListener('load', (e) => {
+            console.log('正在读取视频...')
+        });
+
+        xhr.onloadend = (e) => {
+            console.log('读取视频结束')
+        };
+        xhr.onprogress = (e) => {
+            console.log('视频进度!!!')
+        };
+        xhr.onerror = (e) => {
+            console.log('加载视频进度失败！')
+        };
+        xhr.onabort = (e) => {
+            console.log('终止加载视频请求')
+        };
+        xhr.onreadystatechange = (e) => {
+             console.log(xhr, 'result');
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                result = xhr.response;
+                resolve(result)
+            }
+        };
+        xhr.send(null);
+    }
+
+    function filereaderFetchApi() {
+        //FileReaderSync接口允许以同步的方式读取File或Blob对象中的内容。
+        // 该接口只在workers里可用,因为在主线程里进行同步I/O操作可能会阻塞用户界面。
+        var reader = new FileReader();
+        fetchVideo('./video.mp4').then((data) => {
+            // 获取到blob 转换成
+           //  console.log(data);
+            let fetchsrc = URL.createObjectURL(data);
+            createVideoDomAppend(fetchsrc)
+        });
+    }
+
+    function filereaderXmlHttpRequest() {
+        let reader = new FileReader();
+        xhrVideo('./video.mp4').then((data)=>{
+            // 获取到blob 转换成 //  buffer
+            console.log(data,'filereaderXmlHttpRequest');
+
+            //  let xhrsrc  =  URL.createObjectURL(data);
+
+            //  let xhrsrc  =  reader.readAsDataURL(data);
+             /*buffer - blob*/
+             // let xhrsrc  = URL.createObjectURL(new Blob([data])) ;
+
+            /*blob - buffer  - blob*/
+             let buffersrc = reader.readAsArrayBuffer(data);
+              //createVideoDomAppend(URL.createObjectURL());
+             reader.onloadend=(e)=>{
+               createVideoDomAppend(URL.createObjectURL(new Blob([e.target.result])));
+               // console.log(e)
+             };
+        })
+    }
+
+    function createVideoDomAppend(src) {
+        //预加载video
+        let video = document.createElement('video');
+        document.getElementById('video').append(video);
+        video.src = src;
+        video.controls = true;
+        video.onload = () => {
+            console.log('asdsadas')
+        }
+        setTimeout(()=>{
+            URL.revokeObjectURL(video.src);
+        },5000)
+    }
+</script>
+</html>

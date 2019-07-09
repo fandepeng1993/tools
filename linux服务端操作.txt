@@ -1,0 +1,14 @@
+腾讯云	
+139.155.113.217
+Fandepeng1993
+服务器可视化登录:
+fandepeng 密码 sss_fan@126.com
+til登录:
+ssh -q -l root -p 22 139.155.113.217
+
+pm2 start npm --name "vueSSR" -- run build
+pm2 start npm --name "vueSSR" -- run start
+
+本地上传服务器
+scp  /Users/fdp/Desktop/腾讯云服务器/AnalysisView.zip 
+root@139.155.113.217:/root/www/nuxt-mongo

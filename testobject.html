@@ -81,6 +81,7 @@
   function handleScroll() {
     var scrollYs = window.scrollY || document.documentElement.scrollTop;
     if (arranims.length) {
+        console.log(x);
       arranims.forEach(x => x.currentTime = scrollYs);
     }
   }

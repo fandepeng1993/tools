@@ -95,7 +95,7 @@
 
 <script>
   function myFunction() {
-    console.log(document.styleSheets[0].cssRules[0].style)
+    console.log(document.styleSheets,document.styleSheets[0].cssRules[0].style)
     var declaration = document.styleSheets[0].cssRules[0].style;
     // var removedvalue = declaration.removeProperty("color");
     declaration.setProperty('color','pink')
