@@ -2,6 +2,10 @@ Mysql
 root
 root
 
+yapi
+admin@admin.com
+ymfe.org
+
 
 ÍøÒ×ÓÊÏä/ÆßÅ£ÔÆ
 sss_fan@126.com 

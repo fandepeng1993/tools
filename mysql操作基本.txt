@@ -1,7 +1,7 @@
 mysql 操作命令
 root
 root
-
+brew services list //查看所有服务命令
 authentication plugin 'caching_sha2_password'的解决办法:
 use mysql;
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
@@ -14,7 +14,7 @@ brew cleanup
 登陆mysql：mysql -u root -p
 启动mysql：brew services start mysql
 停止mysql：brew services stop mysql
-重启mysql服务命令：mysql.server restart mysql.server start mysql.server start
+重启mysql服务命令：mysql.server restart mysql.server start mysql.server stop
 
 
 

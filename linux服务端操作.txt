@@ -6,8 +6,11 @@ fandepeng 密码 sss_fan@126.com
 til登录:
 ssh -q -l root -p 22 139.155.113.217
 
-pm2 start npm --name "vueSSR" -- run build
+pm2 start npm --name "AnalysisView" -- run build
 pm2 start npm --name "vueSSR" -- run start
+
+pm2 restart npm --name "AnalysisView" -- run prostrat
+pm2 start npm --name "AnalysisView" -- run prostrat
 
 本地上传服务器
 scp  /Users/fdp/Desktop/腾讯云服务器/AnalysisView.zip 
